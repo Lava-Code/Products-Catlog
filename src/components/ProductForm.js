@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Await, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import "./ProductForm.css";
@@ -153,42 +153,42 @@ const ProductForm = () => {
             },
           }
         )
-        // .then((res) => {
-        //   if (res.data.Product_id > 0) {
-        //     formDetails?.forEach((attribute) => {
-        //       axios
-        //         .post(
-        //           API_Add_ProductAttribute,
-        //           {
-        //             product_id: res.data.Product_id,
-        //             unit_id: attribute.unit_id,
-        //             attribute_value: attribute.attribute_value,
-        //           },
-        //           {
-        //             headers: {
-        //               Accept: "application/json",
-        //               "Content-Type": "application/json",
-        //             },
-        //           }
-        //         )
-        //         .then((res) => {
-        //           if (res.status === 200) {
-        //             dispatch(getProducts());
-        //             dispatch(getProductsDetails());
-        //             navigate("/");
-        //           }
-        //         })
-        //         .catch((error) => {
-        //           if (error.response.status > 200) {
-        //             setError(error.response.statusText);
-        //             axios.delete(API_Delete_ProductHeader, {
-        //               data: { SKU: formHeader.sku },
-        //             });
-        //           }
-        //         });
-        //     });
-        //   }
-        // })
+        .then((res) => {
+          if (res.data.Product_id > 0) {
+            formDetails?.forEach((attribute) => {
+              axios
+                .post(
+                  API_Add_ProductAttribute,
+                  {
+                    product_id: res.data.Product_id,
+                    unit_id: attribute.unit_id,
+                    attribute_value: attribute.attribute_value,
+                  },
+                  {
+                    headers: {
+                      Accept: "application/json",
+                      "Content-Type": "application/json",
+                    },
+                  }
+                )
+                .then((res) => {
+                  if (res.status === 200) {
+                    dispatch(getProducts());
+                    dispatch(getProductsDetails());
+                    navigate("/");
+                  }
+                })
+                .catch((error) => {
+                  if (error.response.status > 200) {
+                    setError(error.response.statusText);
+                    axios.delete(API_Delete_ProductHeader, {
+                      data: { SKU: formHeader.sku },
+                    });
+                  }
+                });
+            });
+          }
+        })
         .catch((error) => {
           if (error) {
             setError(error.message);
