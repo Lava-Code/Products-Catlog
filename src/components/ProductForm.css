@@ -1,0 +1,53 @@
+
+.form-floating { 
+  display: flex;
+  width: 400px;
+  margin: 5px
+}
+
+.form-layout {
+  display: flex;
+  width: 425px;
+  margin: 10px 30px;
+}
+.form-layout span {
+  margin-left: 7px;
+}
+
+.form-heading {
+  
+margin-top: 10px;
+margin-left: 20px;
+text-align: left;
+}
+
+hr {
+  margin: 0px;
+}
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px;
+
+}
+.btn-container button {
+  display: flex;
+  justify-content: space-around;
+  margin: 5px;
+  width: 80px;
+}
+
+.link {
+  text-decoration-line: none;
+}
+.badge {
+  display: flow-root;
+    margin-left: 5px;
+    width:inherit;
+}
+
+.badge-error {
+  height: 30px;
+    padding-top: 10px;
+    font-size:small 
+}
