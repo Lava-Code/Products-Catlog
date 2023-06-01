@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import axios from "axios";
+// import axios from "axios";
 import "./ProductForm.css";
 import AttributesElements from "./AttributesElements";
 // import {
