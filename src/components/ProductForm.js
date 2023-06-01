@@ -138,27 +138,29 @@ const ProductForm = () => {
       !isInvalidAttribute()
     ) {
       let headersList = {
-        Accept: "application/json",
-        // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-        "Content-Type": "application/json; charset=UTF-8",
+        Accept: "*/*",
+        //"User-Agent": "Thunder Client (https://www.thunderclient.com)",
+        "Content-Type": "application/json",
       };
 
       let bodyContent = JSON.stringify({
-        SKU: "2428-Dvd",
+        SKU: "9429-Dvd",
         name: "Dvd-disc",
         price: "50.00",
         type_id: "1",
       });
 
-      let reqOptions = {
-        url: "https://scandiweb-productcatalog.000webhostapp.com/api/product/create_product.php",
-        method: "POST",
-        headers: headersList,
-        data: bodyContent,
-      };
+      let response = await fetch(
+        "https://scandiweb-productcatalog.000webhostapp.com/api/product/create_product.php",
+        {
+          method: "POST",
+          body: bodyContent,
+          headers: headersList,
+        }
+      );
 
-      let response = await axios.request(reqOptions);
-      console.log(response.data);
+      let data = await response.text();
+      console.log(data);
 
       // axios
       //   .post(
