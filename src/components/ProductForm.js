@@ -140,7 +140,7 @@ const ProductForm = () => {
       let headersList = {
         Accept: "application/json",
         // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=UTF-8",
       };
 
       let bodyContent = JSON.stringify({
