@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import "./ProductForm.css";
 import AttributesElements from "./AttributesElements";
-import {
-  getProducts,
-  getProductsDetails,
-} from "../redux/actions/product.action";
+// import {
+//   getProducts,
+//   getProductsDetails,
+// } from "../redux/actions/product.action";
 
 const ProductForm = () => {
   const headerInitialState = {
@@ -26,8 +26,8 @@ const ProductForm = () => {
   const [formHeader, setFormHeader] = useState(headerInitialState);
   const [formDetails, setFormDetails] = useState(detailsInitialState);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
   const category = useSelector((state) => state.category);
   const productHeader = useSelector((state) => state.productsHeader);
@@ -35,9 +35,9 @@ const ProductForm = () => {
   const categoriesList = categories.data;
   const { products } = productHeader;
 
-  const API_Add_ProductHeader = `${process.env.REACT_APP_BASE_URL}/api/product/create_product.php`;
-  const API_Add_ProductAttribute = `${process.env.REACT_APP_BASE_URL}/api/attribute/add_product_attribute.php`;
-  const API_Delete_ProductHeader = `${process.env.REACT_APP_BASE_URL}/api/product/delete_product.php/`;
+  // const API_Add_ProductHeader = `${process.env.REACT_APP_BASE_URL}/api/product/create_product.php`;
+  // const API_Add_ProductAttribute = `${process.env.REACT_APP_BASE_URL}/api/attribute/add_product_attribute.php`;
+  // const API_Delete_ProductHeader = `${process.env.REACT_APP_BASE_URL}/api/product/delete_product.php/`;
 
   const handleHeaderChange = (event) => {
     setFormHeader({
