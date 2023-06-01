@@ -144,7 +144,7 @@ const ProductForm = () => {
       };
 
       let bodyContent = JSON.stringify({
-        SKU: "9429-Dvd",
+        SKU: "Moh-Dvd",
         name: "Dvd-disc",
         price: "50.00",
         type_id: "1",
@@ -153,6 +153,7 @@ const ProductForm = () => {
       let response = await fetch(
         "https://scandiweb-productcatalog.000webhostapp.com/api/product/create_product.php",
         {
+          mode: "no-cors",
           method: "POST",
           body: bodyContent,
           headers: headersList,
