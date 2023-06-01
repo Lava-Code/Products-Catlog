@@ -138,7 +138,7 @@ const ProductForm = () => {
       !isInvalidAttribute()
     ) {
       let headersList = {
-        Accept: "*/*",
+        Accept: "application/json",
         // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
         "Content-Type": "application/json",
       };
