@@ -137,63 +137,87 @@ const ProductForm = () => {
       isValidPrice(formHeader.price) &&
       !isInvalidAttribute()
     ) {
-      await axios
-        .post(
-          API_Add_ProductHeader,
-          {
-            SKU: formHeader.sku,
-            name: formHeader.name,
-            price: formHeader.price,
-            type_id: formHeader.type_id,
-          },
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((res) => {
-          if (res.data.Product_id > 0) {
-            formDetails?.forEach((attribute) => {
-              axios
-                .post(
-                  API_Add_ProductAttribute,
-                  {
-                    product_id: res.data.Product_id,
-                    unit_id: attribute.unit_id,
-                    attribute_value: attribute.attribute_value,
-                  },
-                  {
-                    headers: {
-                      Accept: "application/json",
-                      "Content-Type": "application/json",
-                    },
-                  }
-                )
-                .then((res) => {
-                  if (res.status === 200) {
-                    dispatch(getProducts());
-                    dispatch(getProductsDetails());
-                    navigate("/");
-                  }
-                })
-                .catch((error) => {
-                  if (error.response.status > 200) {
-                    setError(error.response.statusText);
-                    axios.delete(API_Delete_ProductHeader, {
-                      data: { SKU: formHeader.sku },
-                    });
-                  }
-                });
-            });
-          }
-        })
-        .catch((error) => {
-          if (error) {
-            setError(error.message);
-          }
-        });
+      let headersList = {
+        Accept: "*/*",
+        // "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+        "Content-Type": "application/json",
+      };
+
+      let bodyContent = JSON.stringify({
+        SKU: "2428-Dvd",
+        name: "Dvd-disc",
+        price: "50.00",
+        type_id: "1",
+      });
+
+      let reqOptions = {
+        url: "https://scandiweb-productcatalog.000webhostapp.com/api/product/create_product.php",
+        method: "POST",
+        headers: headersList,
+        data: bodyContent,
+      };
+
+      let response = await axios.request(reqOptions);
+      console.log(response.data);
+
+      // axios
+      //   .post(
+      //     API_Add_ProductHeader,
+      //     JSON.stringify({
+      //       SKU: formHeader.sku,
+      //       name: formHeader.name,
+      //       price: formHeader.price,
+      //       type_id: formHeader.type_id,
+      //     }),
+
+      //     {
+      //       headers: {
+      //         Accept: "*/*",
+      //         "Content-Type": "application/json",
+      //       },
+      //     }
+      //   )
+      //   .then((res) => {
+      //     if (res.data.Product_id > 0) {
+      //       formDetails?.forEach((attribute) => {
+      //         axios
+      //           .post(
+      //             API_Add_ProductAttribute,
+      //             {
+      //               product_id: res.data.Product_id,
+      //               unit_id: attribute.unit_id,
+      //               attribute_value: attribute.attribute_value,
+      //             },
+      //             {
+      //               headers: {
+      //                 Accept: "application/json",
+      //                 "Content-Type": "application/json",
+      //               },
+      //             }
+      //           )
+      //           .then((res) => {
+      //             if (res.status === 200) {
+      //               dispatch(getProducts());
+      //               dispatch(getProductsDetails());
+      //               navigate("/");
+      //             }
+      //           })
+      //           .catch((error) => {
+      //             if (error.response.status > 200) {
+      //               setError(error.response.statusText);
+      //               axios.delete(API_Delete_ProductHeader, {
+      //                 data: { SKU: formHeader.sku },
+      //               });
+      //             }
+      //           });
+      //       });
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     if (error) {
+      //       setError(error.message);
+      //     }
+      //   });
     }
   };
 
