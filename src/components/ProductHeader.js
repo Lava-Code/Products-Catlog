@@ -56,27 +56,30 @@ function ProductHeader() {
   const handleDelete = () => {
     if (arrayOfDelete.length > 0) {
       arrayOfDelete?.forEach((item) => {
-        axios
-          .delete(API_Delete_ProductAttribute, {
-            data: { product_id: item.product_id },
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              axios
-                .delete(API_Delete_ProductHeader, { data: { SKU: item.sku } })
-                .then(() => {
-                  dispatch(getProducts());
-                  dispatch(getProductsDetails());
-                });
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        console.log(item.product_id);
+        axios.delete(API_Delete_ProductAttribute, {
+          data: { product_id: item.product_id },
+        });
+        // .then((res) => {
+        //   if (res.status === 200) {
+        //     axios
+        //       .delete(
+        //         API_Delete_ProductHeader,
+        //         JSON.stringify({ SKU: item.sku })
+        //       )
+        //       .then(() => {
+        //         dispatch(getProducts());
+        //         dispatch(getProductsDetails());
+        //       });
+        //   }
+        // })
+        // .catch((err) => {
+        //   console.log(err);
+        // });
       });
     }
   };
-
+  console.log(arrayOfDelete);
   return (
     <div className="header">
       {!loading && !error && (
