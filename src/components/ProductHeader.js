@@ -116,9 +116,7 @@ function ProductHeader() {
                   <label
                     className="form-check-label"
                     htmlFor="flexCheckChecked"
-                  >
-                    {product.product_id}
-                  </label>
+                  ></label>
                 </div>
 
                 <h6>{product.SKU}</h6>
