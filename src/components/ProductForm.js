@@ -147,7 +147,6 @@ const ProductForm = () => {
       axios
         .post(API_Add_ProductHeader, headerContent)
         .then((response) => {
-          console.log(response);
           if (response.data.Product_id > 0) {
             formDetails?.forEach((attribute) => {
               axios
