@@ -1,19 +1,19 @@
 import { React, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./ProductHeader.css";
 import ProductAttribute from "./ProductAttribute";
-// import {
-//   getProducts,
-//   getProductsDetails,
-// } from "../redux/actions/product.action";
+import {
+  getProducts,
+  getProductsDetails,
+} from "../redux/actions/product.action";
 
 function ProductHeader() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const API_Delete_ProductHeader = `${process.env.REACT_APP_BASE_URL}/api/product/delete_product.php/`;
-  // const API_Delete_ProductAttribute = `${process.env.REACT_APP_BASE_URL}/api/attribute/delete_product_attribute.php`;
+  const API_Delete_ProductAttribute = `${process.env.REACT_APP_BASE_URL}/api/attribute/delete_product_attribute.php`;
 
   const productHeader = useSelector((state) => state.productsHeader);
   const { products, loading, error } = productHeader;
@@ -56,30 +56,28 @@ function ProductHeader() {
   const handleDelete = () => {
     if (arrayOfDelete.length > 0) {
       arrayOfDelete?.forEach((item) => {
-        console.log(item.product_id);
-        axios.delete(API_Delete_ProductHeader, {
-          data: JSON.stringify({ SKU: item.sku }),
-        });
-        // .then((res) => {
-        //   if (res.status === 200) {
-        //     axios
-        //       .delete(
-        //         API_Delete_ProductHeader,
-        //         JSON.stringify({ SKU: item.sku })
-        //       )
-        //       .then(() => {
-        //         dispatch(getProducts());
-        //         dispatch(getProductsDetails());
-        //       });
-        //   }
-        // })
-        // .catch((err) => {
-        //   console.log(err);
-        // });
+        axios
+          .get(API_Delete_ProductAttribute, {
+            params: { product_id: item.product_id },
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              axios
+                .get(API_Delete_ProductHeader, {
+                  params: { SKU: item.sku },
+                })
+                .then(() => {
+                  dispatch(getProducts());
+                  dispatch(getProductsDetails());
+                });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
     }
   };
-  console.log(arrayOfDelete);
   return (
     <div className="header">
       {!loading && !error && (

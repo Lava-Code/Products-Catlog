@@ -128,7 +128,7 @@ const ProductForm = () => {
     return validAttribute;
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setError("");
     let headerContent = JSON.stringify({
@@ -169,10 +169,9 @@ const ProductForm = () => {
                 .catch((error) => {
                   if (error.response.status > 200) {
                     setError(error.response.statusText);
-                    axios.delete(
-                      API_Delete_ProductHeader,
-                      JSON.stringify({ SKU: formHeader.sku })
-                    );
+                    axios.get(API_Delete_ProductHeader, {
+                      params: { SKU: formHeader.sku },
+                    });
                   }
                 });
             });
