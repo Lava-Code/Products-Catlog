@@ -74,7 +74,7 @@ const ProductForm = () => {
   };
 
   const isValidName = (value) => {
-    let regex = /^[a-zA-Z-]+$/;
+    let regex = /^[a-zA-Z-0-9]+$/;
     if (!value.match(regex)) {
       setError("Invalid data type: Please provide product name as a string");
       return false;
