@@ -98,8 +98,8 @@ function ProductHeader() {
             </Link>
 
             <button
-              type="button"
               id="delete-product-btn"
+              type="button"
               className="btn btn-danger"
               onClick={handleDelete}
             >
