@@ -53,7 +53,8 @@ function ProductHeader() {
     }
   };
 
-  const handleDelete = () => {
+  const handleDelete = (event) => {
+    event.preventDefault();
     if (arrayOfDelete.length > 0) {
       arrayOfDelete?.forEach((item) => {
         axios
@@ -87,7 +88,11 @@ function ProductHeader() {
           </div>
           <div className="btn-sec">
             <Link to={"/add-product"}>
-              <button type="button" className="btn btn-success">
+              <button
+                id="add-product-btn"
+                type="button"
+                className="btn btn-success"
+              >
                 ADD
               </button>
             </Link>
@@ -110,7 +115,7 @@ function ProductHeader() {
                     type="checkbox"
                     value={product.product_id}
                     sku={product.SKU}
-                    id="flexCheckChecked"
+                    id={index}
                     onChange={handleOnChange}
                   />
                   <label

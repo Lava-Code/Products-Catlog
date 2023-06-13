@@ -37,22 +37,20 @@
     display: inline-block; 
     width: 100%;
     margin: 20px 15px;
-
-    
   }
 
   .btn-sec {
     float: right;
-    margin: 20px 35px;
-    margin-left: 15px;
+    margin: 10px 10px;
+    margin-left: 10px;
   }
 
   .btn-sec button {
-    margin-left: 20px;
+    margin-left: 10px;
     width: 130px;
   }
   .btn-danger{
-    margin-right: 50px;
+    margin-right: 10px;
 
   }
   .hd-sec {
