@@ -101,7 +101,6 @@ function ProductHeader() {
               id="delete-product-btn"
               type="button"
               className="btn btn-danger"
-              name="MASS DELETE"
               onClick={handleDelete}
             >
               MASS DELETE
