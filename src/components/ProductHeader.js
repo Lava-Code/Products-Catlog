@@ -81,30 +81,31 @@ function ProductHeader() {
   };
   return (
     <div className="header">
+      <div className="btn-sec">
+        <Link to={"/add-product"}>
+          <button
+            id="add-product-btn"
+            type="button"
+            className="btn btn-success"
+          >
+            ADD
+          </button>
+        </Link>
+        <button
+          id="delete-product-btn"
+          type="button"
+          className="btn btn-danger"
+          onClick={handleDelete}
+        >
+          MASS DELETE
+        </button>
+      </div>
       {!loading && !error && (
         <>
           <div className="hd-sec">
             <h3 className="form-heading  ">Product List</h3>
           </div>
-          <button
-            id="delete-product-btn"
-            type="button"
-            className="btn btn-danger"
-            onClick={handleDelete}
-          >
-            MASS DELETE
-          </button>
-          <div className="btn-sec">
-            <Link to={"/add-product"}>
-              <button
-                id="add-product-btn"
-                type="button"
-                className="btn btn-success"
-              >
-                ADD
-              </button>
-            </Link>
-          </div>
+
           <div className="container">
             {products.data?.map((product, index) => (
               <div key={product.product_id} className="child overflow-auto">
