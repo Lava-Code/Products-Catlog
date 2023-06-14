@@ -38,6 +38,7 @@ function ProductHeader() {
     const isChcked = event.target.checked;
     const currentIndex = isExist(event);
     if (isChcked) {
+      console.log(event.target.id);
       if (currentIndex == null) {
         setArrayOfDelete([
           ...arrayOfDelete,
@@ -79,7 +80,7 @@ function ProductHeader() {
       });
     }
   };
-
+  console.log(arrayOfDelete);
   return (
     <div className="header">
       <div className="btn-sec">
