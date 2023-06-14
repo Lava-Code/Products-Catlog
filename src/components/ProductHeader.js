@@ -53,7 +53,7 @@ function ProductHeader() {
     }
   };
 
-  const handleDelete = (event) => {
+  const handleDelete = () => {
     if (arrayOfDelete.length > 0) {
       arrayOfDelete?.forEach((item) => {
         axios
