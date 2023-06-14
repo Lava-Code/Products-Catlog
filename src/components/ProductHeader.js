@@ -54,7 +54,6 @@ function ProductHeader() {
   };
 
   const handleDelete = (event) => {
-    event.preventDefault();
     if (arrayOfDelete.length > 0) {
       arrayOfDelete?.forEach((item) => {
         axios
