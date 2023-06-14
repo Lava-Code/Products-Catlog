@@ -54,6 +54,7 @@ function ProductHeader() {
   };
 
   const handleDelete = () => {
+    console.log(arrayOfDelete);
     if (arrayOfDelete.length > 0) {
       arrayOfDelete?.forEach((item) => {
         axios
@@ -78,6 +79,7 @@ function ProductHeader() {
       });
     }
   };
+
   return (
     <div className="header">
       <div className="btn-sec">
