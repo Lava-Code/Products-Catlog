@@ -118,7 +118,7 @@ function ProductHeader() {
                     value={product.product_id}
                     sku={product.SKU}
                     id={index}
-                    onChange={handleOnChange}
+                    onChange={(e) => handleOnChange(e)}
                   />
                   <label
                     className="form-check-label"
