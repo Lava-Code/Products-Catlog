@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+
+# Project overview
+In this project I tried to produce an approach for a custom application that handles unlimited types of products with different attributes without changing or rewriting the backend or frontend code.
+
+# Getting Started with Front-End React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
